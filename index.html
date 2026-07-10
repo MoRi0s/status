@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoRi Official Site</title>
+
+  <link rel="stylesheet" href="sty.css">
+  <link rel="stylesheet" href="status.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+ <link rel="icon" type="image/png" href="prof/prf.jpg">
+</head>
+<body>
+
+  <!-- Opening Video -->
+  <section class="opening-video" id="opening">
+    <video autoplay muted playsinline id="openingvideo">
+      <source src="/prof/19.mp4" type="video/mp4">
+    </video>
+
+    <div class="video-overlay">
+    </div>
+  </section>
+
+  <header>
+    <div class="logo">
+      <a href="index.html" class="site-title">
+      <img src="/prof/logo.png" alt="Artist Logo" width="150" id="logo">
+      </a>
+    </div>
+
+
+  </header>
+      <button class="menu-toggle" id="menuToggle">
+  ☰
+</button>
+
+  <nav class="menu-bar">
+    <a href="index.html">Home</a>
+    <a href="profile.html">Profile</a>
+    <a href="music.html">Music</a>
+    <a href="https://morixxx.com/news/">News</a>
+    <a href="https://morixxx.com/blog/">Blog</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+<br>
+
+
+
+
+
+<main class="status-container">
+
+    <!-- 障害通知 -->
+    <section class="status-card incident-card" id="incident-card">
+        <h2><i class="fa-solid fa-triangle-exclamation"></i> Current Status</h2>
+
+        <!-- JSで色変更 -->
+        <div id="incident-banner" class="incident warning">
+            🟡 Checking server status…
+        </div>
+
+        <p>Last Updated :
+            <span id="last-update">--</span>
+        </p>
+    </section>
+
+    <!-- 稼働率 -->
+    <section class="status-card">
+
+        <h2>Uptime</h2>
+
+        <table class="status-table">
+
+            <tr>
+                <td>Today</td>
+                <td id="uptime-today">--</td>
+            </tr>
+
+            <tr>
+                <td>Last 7 Days</td>
+                <td id="uptime-7">--</td>
+            </tr>
+
+            <tr>
+                <td>Last 30 Days</td>
+                <td id="uptime-30">--</td>
+            </tr>
+
+            <tr>
+                <td>Last 90 Days</td>
+                <td id="uptime-90">--</td>
+            </tr>
+
+            <tr>
+                <td>Total Running Days</td>
+                <td id="running-days">--</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <!-- ハードウェア -->
+    <section class="status-grid">
+
+        <div class="status-card">
+
+            <h2>Hardware</h2>
+
+            <p><b>CPU</b><br><span id="cpu-model"></span></p>
+            <p><b>Memory</b><br><span id="ram"></span></p>
+            <p><b>Storage</b><br><span id="storage"></span></p>
+            <p><b>OS</b><br><span id="os"></span></p>
+
+        </div>
+
+        <div class="status-card">
+
+            <h2>Live Monitor</h2>
+
+            <p>CPU Usage :
+                <span id="cpu-load"></span>
+            </p>
+
+            <p>Memory :
+                <span id="memory-load"></span>
+            </p>
+
+            <p>Disk :
+                <span id="disk-load"></span>
+            </p>
+
+            <p>Temperature :
+                <span id="cpu-temp"></span>
+            </p>
+
+            <p>Uptime :
+                <span id="uptime"></span>
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- サービス -->
+    <section class="status-card">
+
+        <h2>Services</h2>
+
+        <table class="status-table">
+
+            <tr>
+                <td>Website</td>
+                <td><span class="status-dot"></span> <span id="website-status">Checking…</span></td>
+            </tr>
+
+            <tr>
+                <td>Discord Bot</td>
+                <td><span class="status-dot"></span> <span id="bot-status">Checking…</span></td>
+            </tr>
+
+            <tr>
+                <td>API</td>
+                <td><span class="status-dot"></span> <span id="api-status">Checking…</span></td>
+            </tr>
+
+            <tr>
+                <td>Mail</td>
+                <td><span class="status-dot"></span> <span id="mail-status">Checking…</span></td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <!-- CPUグラフ -->
+    <section class="status-card">
+
+        <h2>CPU Usage (24 Hours)</h2>
+
+        <canvas id="cpuChart"></canvas>
+
+    </section>
+
+    <!-- CPU温度 -->
+    <section class="status-card">
+
+        <h2>CPU Temperature (24 Hours)</h2>
+
+        <canvas id="tempChart"></canvas>
+
+    </section>
+
+    <!-- ストレージ履歴 -->
+    <section class="status-card">
+
+        <h2>Storage Usage (30 Days)</h2>
+
+        <canvas id="storageChart"></canvas>
+
+    </section>
+
+    <!-- ネットワーク -->
+    <section class="status-card">
+
+        <h2>Network Traffic</h2>
+
+        <canvas id="networkChart"></canvas>
+
+    </section>
+
+    <!-- 再起動履歴 -->
+    <section class="status-card">
+
+        <h2>Restart History</h2>
+
+        <div id="restart-history"></div>
+
+    </section>
+
+    <!-- 障害履歴 -->
+    <section class="status-card">
+
+        <h2>Incident History</h2>
+
+        <div id="incident-history"></div>
+
+    </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="status.js"></script>
+
+
+
+
+
+
+
+
+<br><br><br>
+
+
+<br>
+<div class="donate-box">
+
+  <p class="donate-text">
+    電気代を払ってくれませんか？
+  </p>
+
+  <a
+    href="donate.html"
+    target="_blank"
+    class="donate-btn"
+  >
+    寄付
+  </a>
+
+</div>
+
+<img class="counter" src="https://kauntah-svg.vercel.app/counter.svg" referrerpolicy="origin" />
+<footer>
+
+   
+    <div class="footer-sns">
+      <a href="https://x.com/M0Rx0k4"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://instagram.com/_qtxll"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://youtube.com/@MoRi_0ss"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://discord.gg/AtsyBu4NRs"><i class="fa-brands fa-discord"></i></a>
+      <a href="https://on.soundcloud.com/OfYD2zfzSR8My1a9UR"><i class="fa-brands fa-soundcloud"></i></a>
+    </div>
+    <a href="index.html">
+    <img class="footer-image" src="/prof/21.gif" alt="Footer Image" width="75">
+    </a>
+
+    <p>© 2026 MoRi All Rights Reserved.</p>
+</footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+name: Deploy status
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Connect Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:githubactions
+
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: 100.93.80.96
+          username: deploy
+          key: ${{ secrets.SERVER_KEY }}
+
+          script: |
+            echo "=== DEPLOY START ==="
+
+            cd /home/mori/mainwebsite/status
+
+            echo "CURRENT:"
+            git rev-parse HEAD
+
+            git fetch origin main
+            git reset --hard origin/main
+
+            echo "AFTER:"
+            git rev-parse HEAD
+
+            echo "=== DEPLOY END ==="

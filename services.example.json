@@ -1,0 +1,22 @@
+[
+  {
+    "id": "website",
+    "type": "http",
+    "url": "https://morixxx.com/"
+  },
+  {
+    "id": "bot",
+    "type": "pm2",
+    "process": "discord-bot"
+  },
+  {
+    "id": "api",
+    "type": "pm2",
+    "process": "api"
+  },
+  {
+    "id": "mail",
+    "type": "systemd",
+    "service": "postfix.service"
+  }
+]

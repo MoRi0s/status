@@ -1,0 +1,531 @@
+html, body {
+  height: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero {
+    align-items: center;
+  text-align: center;
+}
+
+.discord {
+    align-items: center;
+  text-align: center;
+  margin: 0 auto;
+
+}
+
+
+.twitter {
+    align-items: center;
+  text-align: center;
+}
+
+.sns-content,.subdomain {
+    align-items: center;
+  text-align: center;
+}
+
+header {
+  padding-left: 0;
+}
+
+
+nav {
+    text-align: center;
+    background: linear-gradient(#47daff, hsl(0, 0%, 100%));
+    padding: 10px;
+}
+
+.menu-toggle {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none !important;
+  }
+
+  .menu-bar {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block !important;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+
+    z-index: 9000 !important; /* ⭐絶対最前面 */
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+  }
+
+.menu-bar {
+  position: fixed;
+  inset: 0;
+
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start;
+  padding-top: 30px !important; /* ヘッダー分だけ */
+  align-items: center;
+
+  width: 100% ;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(-10px);
+
+
+
+  transition: 0.35s ease;
+  z-index: 5000 !important;
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s !important;
+}
+
+.menu-bar.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+  .menu-bar a {
+    width: 100%;
+    max-width: 420px;
+
+    padding: 28px 0 !important;  /* ←ここでデカくなる */
+
+  font-size: 28px !important;   /* ←文字サイズUP */
+    font-weight: 500;
+
+    text-align: center;
+
+    border: none;
+
+    transition: 0.25s ease;
+  }
+
+  .menu-bar a:hover {
+    transform: scale(1.06);
+    color: #7db7ff;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .sns-links {
+    display: grid !important;
+
+    grid-template-columns: repeat(3, 1fr) !important;
+
+    place-items: center;
+
+    width: 100% !important;
+  }
+
+  .sns-button {
+    width: auto !important;
+    max-width: none !important;
+    flex: unset !important;
+  }
+
+}
+
+.artist-image,
+.sns-button img,
+.footer-image {
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 3px solid rgba(1, 27, 110, 0.25);
+
+  box-shadow:
+    0 0 12px rgba(59,130,246,0.35);
+}
+
+.footer-image {
+  display: block;
+  margin: 10px auto;
+}
+body {
+  padding-top: 100px; /* ヘッダーの高さ分 */
+  background:
+    linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)),
+    url("prof/prf.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  color: white;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.sns-button,
+.sns-button img,
+.sns-button span {
+  transition: all 0.25s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.sns-links {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(6, minmax(60px, 110px));
+
+  justify-content: center;
+
+  justify-items: center;
+
+  gap: clamp(4px, 1vw, 12px);
+
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sns-button {
+  width: 110px;
+  height: 110px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  text-decoration: none;
+  color: white;
+
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sns-button img {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 3px solid rgba(25, 0, 255, 0.247);
+}
+
+#tokusyu img {
+  background: white;
+  padding: 6px;
+  border-radius: 50%;
+}
+
+
+/* PC：spanはホバーで表示 */
+.sns-button span {
+  position: static;
+  bottom: 6px;
+  left: 50%;
+
+  font-size: 12px;
+  line-height: 1;
+
+  opacity: 0;
+  transition: 0.25s ease;
+
+  pointer-events: none;
+}
+
+.sns-button:hover span {
+  opacity: 1;
+}
+
+/* スマホ：常時表示＋下配置 */
+@media (max-width: 768px) {
+
+  .sns-button span {
+    position: static;
+    transform: none;
+
+    opacity: 1;
+
+    margin-top: 6px;
+  }
+}
+
+
+.sns-button:hover {
+  transform: translateY(-2px);
+}
+
+
+
+.opening-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 100000 !important;
+  transition: opacity 1.5s ease;
+  background: black;
+   pointer-events: none; 
+}
+
+
+
+.opening-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-overlay h1 {
+  font-size: 72px;
+  letter-spacing: 5px;
+}
+
+header {
+  position: fixed; /* ←ここ変更 */
+  top: 0;
+  left: 0;
+
+  z-index: 1000;
+
+  background: linear-gradient(0deg, #120538, #000000);
+  padding: 20px 30px;
+  box-shadow: 0 4px 14px rgba(47, 0, 255, 0.432);
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  gap: 12px;
+} 
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.menu-bar {
+  gap: 2px;
+  top: 80px; /* headerの下 */
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(12px);
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.menu-bar a {  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #4500ff;
+  text-decoration: none;
+
+  padding: 10px 10px;
+  font-size: 15px;
+  font-weight: 300;
+
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+
+  transition:
+    background 0.25s ease,
+    transform 0.2s ease;
+}
+
+.menu-bar a:hover {
+  background: rgba(37,99,235,0.35);
+  transform: translateY(0px);
+}
+
+.menu-toggle {
+  display: none;
+
+  background: none;
+  border: none;
+
+  color: white;
+  font-size: 28px;
+
+  cursor: pointer;
+}
+
+
+
+.main-content {
+  flex: 1;
+}
+
+footer{
+    background-color: #fff;
+    color: #000;
+    margin-top: auto;
+
+  width: 100% !important;
+  display: block;
+  text-align: center;
+  padding-bottom: calc(40px + env(safe-area-inset-bottom));
+}
+
+.footer-sns {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.footer-sns a {
+  font-size: 28px;
+}
+
+
+.discord-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 12px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.discord-widget {
+  width: 100%;
+  max-width: 600px;
+  height: 600px;
+  border: none;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .discord-widget {
+    height: 400px;
+    max-width: 100%;
+  }
+}
+
+.counter{
+  display: block;
+
+  margin: 20px auto 0;
+
+  width: 60%;
+  max-height: clamp(60px, 25vw, 200px);
+
+  height: auto;
+
+  object-fit: contain;
+}
+
+/* スマホ */
+@media (max-width: 768px){
+
+  .counter{
+   width: 60%;
+    max-height: clamp(50px, 25vw, 150px);
+  }
+
+}
+
+.donate-box{
+
+  margin-top: 80px;
+
+  padding: 24px;
+
+  text-align: center;
+
+  border-top:
+    1px solid rgba(255,255,255,.1);
+
+}
+
+.donate-text{
+
+  color: #aaa;
+
+  margin-bottom: 16px;
+
+  font-size: 14px;
+
+}
+
+.donate-btn{
+
+  display: inline-block;
+
+  padding: 12px 22px;
+
+  border-radius: 999px;
+
+  background: #ffffff;
+
+  color: #000;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: .2s;
+
+}
+
+.donate-btn:hover{
+
+  transform: scale(1.05);
+
+}
