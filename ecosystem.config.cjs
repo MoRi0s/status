@@ -8,7 +8,7 @@ module.exports = {
         // PM2の実際のプロセス名に合わせて process を変更してください。
         STATUS_SERVICES: JSON.stringify([
           { id: 'website', type: 'http', url: 'https://morixxx.com/' },
-          { id: 'bot', type: 'pm2', process: 'discord-bot' },
+          { id: 'bot', type: 'pm2', process: 'morxbot' },
           { id: 'api', type: 'pm2', process: 'api' },
           { id: 'mail', type: 'systemd', service: 'postfix.service' },
         ]),

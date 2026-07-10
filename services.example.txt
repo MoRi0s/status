@@ -7,7 +7,7 @@
   {
     "id": "bot",
     "type": "pm2",
-    "process": "discord-bot"
+    "process": "morxbot"
   },
   {
     "id": "api",
