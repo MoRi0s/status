@@ -7,7 +7,7 @@ const si = require('systeminformation');
 const axios = require('axios');
 
 const app = express();
-const port = Number(process.env.PORT || 3000);
+const port = Number(process.env.PORT || 4000);
 const sampleIntervalMs = 60_000;
 const historyFile = process.env.STATUS_HISTORY_FILE || path.join(__dirname, 'data', 'metrics-history.json');
 const historyLimit = 43_200; // 30 days at one sample per minute
